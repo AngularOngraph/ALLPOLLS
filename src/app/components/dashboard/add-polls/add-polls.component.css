@@ -1,0 +1,99 @@
+.add-poll-section{
+    max-width: 900px;
+margin: 3rem auto;
+}
+
+.options-btn {
+    top: 6px;
+    right: 5px;
+    padding: 5px 10px;
+    border: 1.5px solid #010727;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 14px;
+    background-color: #3d4f7f;
+  }
+  
+  .btn {
+    margin: 5px;
+    padding: 5px;
+  }
+  
+  .wd-95 {
+    width: 92%;
+  }
+  
+  button.btn.btn-danger.remove-btn {
+    padding: 1px 5px;
+    height: 30px;
+    font-size: 12px;
+  }
+  
+  .remove {
+    margin: auto auto 38px;
+    color: red;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  
+  .add {
+    margin: auto auto 38px;
+    color:blue;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  
+  .projectsubbmit ul {
+    padding: 0;
+    list-style: none;
+  }
+  .projectsubbmit ul li {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  
+  
+  .user-list ul {
+    padding: 0;
+    list-style: none;
+  }
+  .user-list ul li {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    columns: white;
+    padding: 7px;
+  }
+  
+  .profile-img-user {
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .profile-img-user img {
+    border-radius: 50%;
+  }
+  .profile-img-user p {
+    margin-left: 10px;
+    margin-bottom: 0;
+    word-break: break-word;
+    white-space: pre-wrap;
+    max-width: 135px;
+    min-width: 120px;
+    color: black;
+  }
+  
+  .add-button {
+    color: #909092;
+  }
+  .cancel-btn {
+    background: linear-gradient(172.16deg, #f60307 -32.85%, #f10929 90.32%);
+    color: #fff;
+    transition: 0.6s;
+  }
