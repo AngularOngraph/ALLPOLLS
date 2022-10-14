@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubmitPollComponent implements OnInit {
 
-  constructor() { }
+  public activeOpt: boolean
+  constructor() { 
+    this.activeOpt = false;
+  }
 
   ngOnInit(): void {
+    
   }
 
 }
