@@ -1,1 +1,285 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+    height: 100%;
+    background-image: url('./assets/background.png');
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.white {
+    color: #ffffff;
+}
+
+.data-form {
+    max-width: 400px;
+    min-width: 400px;
+    padding: 40px;
+    border-radius: 8px;
+    background: linear-gradient(200.89deg, #27aa5ca3 -5.19%, #27aa5cde 210.52%);
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.data-form h1 {
+    color: #ffffff;
+    font-size: 25px;
+    text-align: center;
+}
+
+.registerbtn {
+    color: white;
+    margin: 0px 0 10px 0px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    width: 100%;
+    max-width: 200px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #01A66F;
+}
+
+
+.form-control {
+    color: #323d64;
+    border: 1px solid #efefef;
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #374269;
+    outline: 0;
+    box-shadow: none;
+}
+
+.data-form .form-group {
+    margin-bottom: 20px !important;
+}
+
+input {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.data-form a {
+    color: #24325d;
+    text-decoration: none;
+}
+.link-btn {
+    border-color: transparent;
+    background: transparent;
+    color: #fff;
+    padding: 0px;
+}
+
+.link-btn:hover {
+    text-decoration: underline;
+}
+
+.mb-10px {
+    margin-bottom: 10px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a {
+    color: #365bcc;
+    text-decoration: none;
+}
+
+p {
+    font-size: 14px;
+}
+
+.text-color {
+    color: #333333;
+}
+
+.logo {
+    margin: 10px auto;
+    max-width: 260px;
+}
+
+.data-form p {
+    color: #fff;
+}
+
+.custom-margin {
+    padding: 35px 20px 20px 20px;
+}
+
+.btn-cta {
+    border: 0px solid transparent;
+    background-color: #18244E;
+    padding: 10px 10px;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.page-heading {
+    font-size: 30px;
+    color: #000000;
+    margin-bottom: 5px;
+}
+
+.card {
+    border: 0px solid transparent;
+    padding: 30px 20px;
+    background-color: #fff;
+    border-radius: 25px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.card-title {
+    color: #ee562c;
+    font-weight: 600;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.card input[type=text].form-control, .card input[type=number].form-control {
+    padding: 5px;
+    border: 2px solid #aaaaaa;
+    border-radius: 4px;
+    background-color: #ffffff;
+    margin-bottom: 5px !important;
+}
+
+
+
+.card .info-element {
+    color: #848181;
+    text-transform: capitalize;
+    font-size: 13px;
+}
+
+th {
+    border-top: 0px solid transparent !important;
+}
+
+.orange-btn {
+    background-color: #FC9C6A;
+    color: #fff;
+    padding: 5px 20px;
+    border: 0px solid transparent;
+    max-width: 200px;
+    margin: 10px auto;
+    border-radius: 4px;
+    transition: 0.6s;
+}
+
+.orange-btn:hover {
+    opacity: 0.8;
+    color: #fff;
+}
+
+a.orange-btn {
+    text-decoration: none;
+}
+
+
+.toast-success {
+    background-color: #51A351;
+}
+
+.toast-error {
+    background-color: #BD362F;
+}
+
+.toast-info {
+    background-color: #2F96B4;
+}
+
+.toast-warning {
+    background-color: #F89406;
+}
+
+.toast-progress {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    background-color: #000000;
+    opacity: 0.4;
+}
+
+/* .dashboard-heading .btn-cta {
+    margin-bottom: 15px;
+    margin-top: 8px;
+} */
+
+.table-records-pages {
+    padding-top: 20px;
+}
+
+/* textarea {
+    width: 100%;
+} */
+
+.modal-title {
+    font-size: 20px;
+}
+
+.badge-success {
+    color: #fff !important;
+}
+
+/* Responsive Design */
+
+
+
+/*  Style css for loader starts here */
+#divLoading {
+    margin: 0px;
+    padding: 0px;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(102, 102, 102);
+    z-index: 30001;
+    opacity: 0.8;
+}
+
+.loader {
+    border: 8px solid #F3F3F3;
+    border-radius: 50%;
+    border-top: 8px solid #111D47;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    color: White;
+    top: 40%;
+    left: 45%;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+}
+.wd-100{
+    width: 100%;
+}
+
+@media (min-width: 1150px){
+    .card button {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    min-width: 120px;
+}
+}

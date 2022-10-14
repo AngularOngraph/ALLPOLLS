@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+    height: 100%;
+}
+
+.section-block {
+    height: 100%;
+    width: 100%;
+    background-image: url('../../../../assets/background.png');
+    background-size: 100% 100%;
+    padding: 60px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.first-block {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.heading {
+    color: #272626;
+    font-size: 65px;
+    text-transform: capitalize;
+    font-weight: 700;
+}
+
+.heading span {
+    /* color: #272626; */
+    font-size: 95px;
+    color: #27aa5c;
+    text-transform: capitalize;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.green-color {
+    background: #27aa5c !important;
+}
+
+.left-btn-icon button {
+    max-width: 234px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 15px;
+    border: 2px solid #4ba06e !important;
+}
+
+.all-polls {
+    width: 100%;
+    max-width: 164px;
+}
+
+
+

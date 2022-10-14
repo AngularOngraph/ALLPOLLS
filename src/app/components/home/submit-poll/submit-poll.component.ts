@@ -6,14 +6,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./submit-poll.component.css']
 })
 export class SubmitPollComponent implements OnInit {
-
-  public activeOpt: boolean
+  public activeOpt1= false;
+  public activeOpt2= false;
+  public activeOpt3= false;
+  public activeOpt4= false;
   constructor() { 
-    this.activeOpt = false;
   }
 
   ngOnInit(): void {
     
   }
-
+  selectedIndex(index:number){
+    if(index == 1){
+      this.activeOpt1 =true;
+    }else if(index == 2){
+      this.activeOpt2 =true;
+    }else if(index == 3){
+      this.activeOpt3 =true;
+    }else if(index == 4){
+      this.activeOpt4 =true;
+    }
+  }
 }
