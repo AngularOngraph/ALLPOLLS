@@ -10,13 +10,13 @@
         <h1>Create Account</h1>
         <div class="form-group  first-child">
           <div class="input name">
-            <input name="name" formControlName="fullname" required class="form-control" id="name" data-position="top"
+            <input name="name" formControlName="fullName" required class="form-control" id="name" data-position="top"
               minlength="2" maxlength="60" placeholder="Enter Full Name" autocomplete="off">
-            <div *ngIf="registerControls.fullname.touched && registerControls.fullname.errors">
-              <span class="custom-error" *ngIf="registerControls.fullname.errors.required">This
+            <div *ngIf="registerControls.fullName.touched && registerControls.fullName.errors">
+              <span class="custom-error" *ngIf="registerControls.fullName.errors.required">This
                 field is required!
               </span>
-              <span class="custom-error" *ngIf="registerControls.fullname.errors.pattern">This
+              <span class="custom-error" *ngIf="registerControls.fullName.errors.pattern">This
                 field is invalid!
               </span>
             </div>
