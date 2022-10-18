@@ -10,6 +10,7 @@ export class SubmitPollComponent implements OnInit {
   public activeOpt2= false;
   public activeOpt3= false;
   public activeOpt4= false;
+
   constructor() { 
   }
 
@@ -17,6 +18,11 @@ export class SubmitPollComponent implements OnInit {
     
   }
   selectedIndex(index:number){
+    this.activeOpt1= false;
+    this.activeOpt2= false;
+    this.activeOpt3= false;
+    this.activeOpt4= false;
+
     if(index == 1){
       this.activeOpt1 =true;
     }else if(index == 2){
