@@ -25,24 +25,16 @@
           <div class="col">
             <h3 class="mb-5">Create Polls</h3>
             <div class="form-group row">
-              <label class="col-md-3 col-form-label">Title :</label>
+              <label class="col-md-3 col-form-label">Enter Question Here :</label>
               <div class="col-md-9">
                 <div class="form-group">
-                  <input type="text" class="form-control" formControlName="title" >
-                </div>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label">Enter Description :</label>
-              <div class="col-md-9">
-                <div class="form-group">
-                  <textarea class="form-control" formControlName="description"  rows="5" cols="33"></textarea>
+                  <textarea class="form-control" formControlName="question"  rows="5" cols="33"></textarea>
                   <div formArrayName="options">
                     <div *ngFor="let skill of questionsOptions().controls; let choiceIndex=index">
                       <div [formGroupName]="choiceIndex" class="d-flex">
                         <div class="wd-95">
                           <label> Options {{choiceIndex+1}} :</label>
-                          <input type="text"  formControlName="choices" />
+                          <input type="text"  formControlName="choice" />
                         </div>
                         <div (click)="addOptions()" class="add" *ngIf="choiceIndex == 0">
                           <i class="fa fa-plus" aria-hidden="true"></i>
@@ -59,7 +51,7 @@
 
           </div>
           <div>
-            <button type="submit" class="btn gradbtn">
+            <button type="submit" class="btn gradbtn" (click)="savePoll()">
               Publish
             </button>
             <button class="btn cancel-btn" routerLink="/proposal/my-proposal"

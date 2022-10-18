@@ -12,22 +12,22 @@ export class PollsService {
 
  // get All Polls List 
     public getPolls(): Observable<any> {
-      return this.apiService.request('get', '/getPolls')
+      return this.apiService.request('get','polls/poll-list')
     }
 
  // update poll status
     public updatePollStaus(status:Boolean): Observable<any> {
-      return this.apiService.request('post', '/updatePollStaus',{status});
+      return this.apiService.request('post', 'updatePollStaus',{status});
     }
 
  // delete poll by id
     public deletePolls(id:string): Observable<any>{
-      return this.apiService.request('post', '/deletePoll',{id});
+      return this.apiService.request('post', 'deletePoll',{id});
     }
 
  // save new Poll
     public saveNewPoll(payload:Object): Observable<any> {
-      return this.apiService.request('post', '/create-poll',{payload});
+      return this.apiService.request('post','polls/create-poll',{payload});
     }
 
 
