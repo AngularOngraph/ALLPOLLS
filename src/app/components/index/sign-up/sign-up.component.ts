@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 export class SignUpComponent implements OnInit {
   adminRegister: FormGroup;
   constructor(private formBuilder: FormBuilder,
-    private router: Router, private userService: UserService) {
+    private router: Router, private userService: UserService, private toastr: ToastrService) {
     this.adminRegister = this.formBuilder.group({
       fullName: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z]{2,}(?: [a-zA-Z]+){0,4}$')]),
       email: new FormControl('', [Validators.required,
@@ -31,8 +32,11 @@ export class SignUpComponent implements OnInit {
     if (this.adminRegister.valid) {
       this.userService.registration(this.adminRegister.value).subscribe((res) => {
         if (res.success) {
+          this.toastr.success(res.msg);
           this.router.navigate(['sign-in']);
         } else {
+          console.log(res.msg);
+          this.toastr.error(res.msg);
         }
       },
         (err) => {
