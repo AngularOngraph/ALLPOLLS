@@ -16,3 +16,11 @@
   }
   .row.content {height: auto;} 
 }
+
+.logout-btn{
+  position: absolute;
+  right: 0;
+  bottom: 29px;
+  left: 0;
+  top: 549px;
+}

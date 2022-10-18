@@ -7,7 +7,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let data of pollData;let i=index">
+      <tr *ngFor="let data of pollData;let i=index" routerLinkActive="active" routerLink="/dashboard/polls-vote/{{data._id}}">
         <th scope="row">{{i+1}}</th>
         <td>{{data.question}}</td>
         <td>{{data.status}}</td>

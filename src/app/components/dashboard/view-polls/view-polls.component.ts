@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PollsService } from 'src/app/services/polls.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-view-polls',
@@ -8,7 +9,8 @@ import { PollsService } from 'src/app/services/polls.service';
 })
 export class ViewPollsComponent implements OnInit {
 public pollData:any = [];
-  constructor(private pollService : PollsService) { }
+  constructor(private pollService : PollsService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getPollList();
@@ -21,5 +23,6 @@ public pollData:any = [];
     }
   })
   }
+
 
 }
