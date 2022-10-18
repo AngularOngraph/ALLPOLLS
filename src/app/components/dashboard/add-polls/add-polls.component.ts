@@ -13,8 +13,7 @@ export class AddPollsComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private pollService: PollsService) {
     this.pollForm = this.fb.group({
-      title: ['', [Validators.required]],
-      description: ['', [Validators.required]],
+      question: ['', [Validators.required]],
       options: this.fb.array(this.optionsArray),
     });
   }
@@ -27,7 +26,7 @@ export class AddPollsComponent implements OnInit {
 
   newChoice(): FormGroup {
     return this.fb.group({
-      choices: [''],
+      choice: [''],
     })
   }
 
@@ -42,7 +41,6 @@ export class AddPollsComponent implements OnInit {
   savePoll() {
     this.pollService.saveNewPoll(this.pollForm.value).subscribe((res) => {
       if (res.success) {
-        console.log(res);
       }
     }, (err) => {
       console.log(err);

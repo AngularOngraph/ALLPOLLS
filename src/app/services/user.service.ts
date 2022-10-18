@@ -15,12 +15,12 @@ export class UserService {
 
   // new user registration
   public registration(user: Object): Observable<any> {
-    return this.apiService.request('post', '/signup', user)
+    return this.apiService.request('post', 'signup', user)
   }
 
 
   // login after registration
   public login(user: Object): Observable<any> {
-    return this.apiService.request('post', '/signin', user)
+    return this.apiService.request('post', 'signin', user)
   }
 }

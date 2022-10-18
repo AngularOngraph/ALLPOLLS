@@ -26,7 +26,6 @@ export class SignInComponent implements OnInit {
         if (res.success) {
           this.router.navigate(['dashboard']);
         } else {
-          console.log(res.msg);
         }
       },
         (err) => {

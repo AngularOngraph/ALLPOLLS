@@ -14,7 +14,6 @@ export class ApiService {
 
   constructor(private http: HttpClient,
     private router: Router,) {
-    this.env = this.getEnv();
   }
 
   /*
@@ -22,28 +21,9 @@ export class ApiService {
  */
   private saveToken(token: string): void {
     localStorage.setItem("sdasd923hd9dwe", token);
-    localStorage.setItem("abschuendj", "incomplete");
     this.token = token;
   }
 
-  /*
-        save env in localstorage
-     */
-  public saveEnv(val: string): void {
-    localStorage.removeItem("env");
-    localStorage.setItem("env", val);
-    this.env = val;
-  }
-
-  /*
-        call for fetch env from localStrogae
-     */
-  public getEnv(): string {
-    if (!this.env) {
-      this.env = localStorage.getItem("env");
-    }
-    return this.env;
-  }
 
   /*
         call for fetch token from localStrogae
@@ -101,7 +81,6 @@ export class ApiService {
               // store user details and jwt token in local storage to keep user logged in between page refreshes
               localStorage.setItem("sdasd923hd9dwe", user.token);
             }
-
             return user;
           })
         );
@@ -113,24 +92,21 @@ export class ApiService {
           type === "login" ||
           type === "securityauth"
         ) {
-          base = this.http.post<any>(this.api_url + "users" + type, user, {
+          base = this.http.post<any>(this.api_url + type, user, {
             withCredentials: true,
           });
         } else {
-          base = this.http.post<any>(this.api_url + "users" + type, user, {
+          base = this.http.post<any>(this.api_url  + type, user, {
             withCredentials: true,
             headers: { Authorization: `Bearer ${this.getToken()}` },
           });
         }
       } else {
-        base = this.http.get<any>(this.api_url + "users" + type, {
+        base = this.http.get<any>(this.api_url + type, {
           headers: { Authorization: `Bearer ${this.getToken()}` },
           withCredentials: true,
           params: paramslist,
         });
-      }
-      if (type === "login") {
-        this.saveEnv("real");
       }
       const request = base.pipe(
         map((data: any) => {
