@@ -1,50 +1,27 @@
 
 
 <div class="container">
-<form class="multisteps_form bg-white position-relative overflow-hidden poll-block" id="wizard">
-   <!------------------------- Step-1 ----------------------------->
-   <div class="multisteps_form_panel step active ">
-      <div class="question_title text-center text-uppercase">
-         <h1 class="animate__animated animate__fadeInRight animate_25ms">What kind of services you are quiz?</h1>
-      </div>
-      <div class="row  form_items">
-         <div class="col-12">
-            <ul class="list-unstyled p-0">
-               <li  [class.active]="activeOpt1" class="active step_1 animate__animated animate__fadeInRight animate_50ms" >
-                  <input id="opt_1" type="radio" (click)="selectedIndex(1)" name="stp_1_select_option" value="1">
-                  <label for="opt_1">Well organized and Easy</label>
-               </li>
-            </ul>
+   <form *ngIf="pollData" [formGroup]="pollSubmitForm" class="multisteps_form bg-white position-relative overflow-hidden poll-block" id="wizard">
+      <!------------------------- Step-1 ----------------------------->
+      <div class="multisteps_form_panel step active ">
+         <div class="question_title text-center text-uppercase">
+            <h1 class="animate__animated animate__fadeInRight animate_25ms">{{pollData.question}}</h1>
          </div>
-         <div class="col-12">
-            <ul class="list-unstyled p-0">
-               <li [class.active]="activeOpt2" class=" step_1 animate__animated animate__fadeInRight animate_100ms" >
-                  <input id="opt_2" type="radio"   name="stp_1_select_option" value="2" (click)="selectedIndex(2)">
-                  <label for="opt_2">Transition Between Two</label>
-               </li>
-            </ul>
-         </div>
-         <div class="col-12">
-            <ul class="list-unstyled p-0">
-               <li  [class.active]="activeOpt3" class=" step_1 animate__animated animate__fadeInRight animate_150ms" >
-                  <input id="opt_3" type="radio" (click)="selectedIndex(3)"   name="stp_1_select_option" value="3">
-                  <label for="opt_3">Transitions are Shown</label>
-               </li>
-            </ul>
-         </div>
-         <div class="col-12">
-            <ul class="list-unstyled p-0">
-               <li [class.active]="activeOpt4" class="step_1 animate__animated animate__fadeInRight animate_200ms" >
-                  <input id="opt_4" (click)="selectedIndex(4)" type="radio"   name="stp_1_select_option" value="4">
-                  <label for="opt_4">Generate a nice Color</label>
-               </li>
-            </ul>
+         <div class="row  form_items" *ngFor="let option of pollData.options">
+            <div class="col-12">
+               <ul class="list-unstyled p-0">
+                  <li id="{{option.id}}" (click)="selectedIndex(option.id)" class="step_1 animate__animated animate__fadeInRight animate_50ms option" >
+                     <input  type="radio" formControlName="selectOptId"  name="stp_1_select_option" value={{option.id}}>
+                     <label for={{option.id}}>{{option.value}}</label>
+                  </li>
+               </ul>
+            </div>
          </div>
       </div>
+      <div class="form_btn">
+         <button type="button"  class="next_btn rounded-pill position-absolute text-uppercase text-white"  (click)="onSubmitPoll()" id="nextBtn">Submit</button>
+      </div>
+   </form>
    </div>
-   <div class="form_btn">
-      <button type="button"  class="next_btn rounded-pill position-absolute text-uppercase text-white" id="nextBtn">Submit</button>
-   </div>
-</form>
-</div>
-
+   
+   

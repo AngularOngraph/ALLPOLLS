@@ -7,7 +7,7 @@ import { SubmitPollComponent } from './submit-poll/submit-poll.component';
 const routes: Routes = [
   { path: '', redirectTo: 'layout', pathMatch: 'full'},
   { path: 'layout', component: LandingComponent, canActivate: [NoAuthGuard]},
-  { path: 'submit-poll', component: SubmitPollComponent, canActivate: [NoAuthGuard] },
+  { path: 'submit-poll/:pollId', component: SubmitPollComponent},
 ];
 
 @NgModule({
