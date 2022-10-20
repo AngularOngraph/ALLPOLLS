@@ -1,8 +1,5 @@
-
-
 <div class="container">
    <form *ngIf="pollData" [formGroup]="pollSubmitForm" class="multisteps_form bg-white position-relative overflow-hidden poll-block" id="wizard">
-      <!------------------------- Step-1 ----------------------------->
       <div class="multisteps_form_panel step active ">
          <div class="question_title text-center text-uppercase">
             <h1 class="animate__animated animate__fadeInRight animate_25ms">{{pollData.question}}</h1>
@@ -11,7 +8,7 @@
             <div class="col-12">
                <ul class="list-unstyled p-0">
                   <li id="{{option.id}}" (click)="selectedIndex(option.id)" class="step_1 animate__animated animate__fadeInRight animate_50ms option" >
-                     <input  type="radio" formControlName="selectOptId"  name="stp_1_select_option" value={{option.id}}>
+                     <input  type="radio"  name="selectOption">
                      <label for={{option.id}}>{{option.value}}</label>
                   </li>
                </ul>

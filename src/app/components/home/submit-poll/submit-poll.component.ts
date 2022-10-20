@@ -50,32 +50,15 @@ export class SubmitPollComponent implements OnInit {
     this.pollSubmitForm.patchValue({
       selectOptId: index
     });
-
-    // this.activeOpt1= false;
-    // this.activeOpt2= false;
-    // this.activeOpt3= false;
-    // this.activeOpt4= false;
-
-    // if(index == 1){
-    //   this.activeOpt1 = true;
-    // }else if(index == 2){
-    //   this.activeOpt2 = true;
-    // }else if(index == 3){
-    //   this.activeOpt3 = true;
-    // }else if(index == 4){
-    //   this.activeOpt4 = true;
-    // }
   }
 
   getPollDetails(pollId:string){
     this.pollService.getPollById(pollId).subscribe((res) => {
       if (res.success) {
         this.pollData = res.response;
-        //console.log(res);
       }
     }, (err) => {
       console.log(err);
-
     })
   }
 

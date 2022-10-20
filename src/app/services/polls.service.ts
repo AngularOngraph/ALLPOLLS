@@ -11,8 +11,9 @@ export class PollsService {
     private http: HttpClient) { }
 
  // get All Polls List 
-    public getPolls(): Observable<any> {
-      return this.apiService.request('get','polls/poll-list')
+    public getPolls(search: string,limit: number, page: number): Observable<any> {
+      return this.apiService.request('get','polls/poll-list?search='
+      + search + '&limit=' + limit + '&page=' + page);
     }
 
  // update poll status
