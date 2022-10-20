@@ -11,8 +11,9 @@ export class PollsService {
     private http: HttpClient) { }
 
  // get All Polls List 
-    public getPolls(): Observable<any> {
-      return this.apiService.request('get','polls/poll-list')
+    public getPolls(search: string,limit: number, page: number): Observable<any> {
+      return this.apiService.request('get','polls/poll-list?search='
+      + search + '&limit=' + limit + '&page=' + page);
     }
 
  // update poll status
@@ -29,6 +30,16 @@ export class PollsService {
     public saveNewPoll(payload:Object): Observable<any> {
       return this.apiService.request('post','polls/create-poll',{payload});
     }
+
+// get poll by id
+  public getPollById(pollId:string): Observable<any>{
+    return this.apiService.request('get', 'polls/get-poll/'+pollId);
+  }
+
+// submit poll
+public submitPoll(payload:Object): Observable<any>{
+  return this.apiService.request('post', 'polls/submit-poll/',{payload});
+}
 
 
 }

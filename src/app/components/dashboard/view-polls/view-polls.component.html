@@ -1,17 +1,43 @@
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">question</th>
-        <th scope="col">status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let data of pollData;let i=index">
-        <th scope="row">{{i+1}}</th>
-        <td>{{data.question}}</td>
-        <td>{{data.status}}</td>
-        <td>@mdo</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="main-container"> 
+    <div class="search">
+      <div class="form-inline ml-auto mt-2 mt-md-0 ">  
+        <input class="form-control mr-sm-2" type="text" [(ngModel)]="search" placeholder="Search Polls Here" aria-label="Search">  
+        <div>
+          <button class="btn  my-2 my-sm-0 gradbtn" type="submit">Add New Poll</button>  
+        </div>
+        
+      </div> 
+    </div>         
+    <table class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">question</th>
+          <th scope="col">status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of pollData">
+          <td class="question">{{data.question}}</td>
+          <td *ngIf="data.status == true"><a href="" class="badge">open</a></td>
+          <td *ngIf="data.status == false"><a href="" class="badge">close</a></td>
+          <td><button class="gradbtn" routerLinkActive="active" routerLink="/dashboard/polls-vote/{{data._id}}">
+            view
+          </button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pagination">
+      <ngb-pagination style="flex-direction: column;flex-wrap: wrap;"
+      [collectionSize]="collectionSize" 
+      [(page)]="page" 
+      [boundaryLinks]="true" [pageSize]="limit" (pageChange)="getPollList()"  >
+    </ngb-pagination>
+    <!-- <ngb-pagination style="flex-direction: column;flex-wrap: wrap;" class="d-flex justify-content-end"
+                [collectionSize]="collectionSize" [(page)]="page" (pageChange)="loadPage($event)" [pageSize]="limit">
+            </ngb-pagination> -->
+    </div>
+
+    <div>
+  </div>
+  </div>

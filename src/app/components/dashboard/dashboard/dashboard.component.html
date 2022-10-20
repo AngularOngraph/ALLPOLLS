@@ -1,34 +1,25 @@
-<div class="container-fluid">
-    <div class="row content">
-      <div class="col-sm-2 sidenav">
-        <h4>Admin</h4>
-      <br>
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search Blog..">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button">
-              <span class="glyphicon glyphicon-search"></span>
-            </button>
-          </span>
-        </div>
-        <div class="poll-link">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button" routerLinkActive="active" [routerLink]="['list']">
-              <span class="glyphicon glyphicon-search"  >POLLs</span>
-            </button>
-          </span>
-        </div>
-        <div class="add-link">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button" routerLinkActive="active" [routerLink]="['add']">
-              <span class="glyphicon glyphicon-search">Create New Poll</span>
-            </button>
-          </span>
-        </div>
-      </div>
-  
-      <div class="col-sm-10">
+<div class="main-container">
+   <div class="row">
+    <div class="col-md-3">
+      <div class="content">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">  
+          <a class="navbar-brand" href="#"> JavaTpoint </a>   
+          <div class="collapse navbar-collapse" id="navbarCollapse">  
+            <ul class="navbar-nav mr-auto sidenav" id="navAccordion">  
+              <li class="nav-item active">  
+                <a class="nav-link link-icon" href="#"> Pools</a>  
+              </li>  
+              <li class="nav-item">  
+                <a class="nav-link link-icon" href="#"> Create a Poll </a>  
+              </li>  
+            </ul>   
+          </div>  
+        </nav>  
+    </div>
+    </div>
+          <div class="col-md-9">
         <router-outlet></router-outlet>
       </div>
-    </div>
+   </div>
   </div>
+

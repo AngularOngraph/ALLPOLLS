@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { ChartsModule } from 'ng2-charts';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { ViewPollsComponent } from './view-polls/view-polls.component';
 import { AddPollsComponent } from './add-polls/add-polls.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PollsVotingComponent } from './polls-voting/polls-voting.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -20,7 +21,9 @@ import { PollsVotingComponent } from './polls-voting/polls-voting.component';
     CommonModule,
     DashboardRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChartsModule,
+    NgbModule
   ]
 })
 export class DashboardModule { }

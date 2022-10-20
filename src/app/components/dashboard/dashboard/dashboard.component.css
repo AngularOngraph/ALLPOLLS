@@ -1,6 +1,16 @@
 /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
 .row.content {height: 150px}
-    
+
+.link-icon{
+  color: white !important;
+  display: inline-block;
+  padding-top: 0.6rem;
+  padding-bottom: 0.5rem;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  line-height: inherit;
+  white-space: nowrap;
+}
 /* Set gray background color and 100% height */
 .sidenav {
   background-color: #f1f1f1;
@@ -16,3 +26,77 @@
   }
   .row.content {height: auto;} 
 }
+
+.logout-btn{
+  position: absolute;
+  right: 0;
+  bottom: 29px;
+  left: 0;
+  top: 549px;
+}
+
+
+
+
+/* external css */
+html {  
+  position: relative;  
+  min-height: 100%;  
+}  
+body {  
+  padding-top: 4.5rem;  
+  margin-bottom: 4.5rem;  
+}  
+.footer {  
+position: absolute;  
+bottom: 0;  
+width: 100%;  
+height: 3.5rem;  
+line-height: 3.5rem;  
+background-color: #ccc;  
+}  
+.bg-dark {  
+  background-color: #6c757d38 !important ;  
+}  
+.nav-link:hover {  
+transition: all 0.4s;  
+}  
+.nav-link-collapse:after {  
+float: right;  
+content: '\f067';  
+font-family: 'FontAwesome';  
+}  
+.nav-link-show:after {  
+float: right;  
+content: '\f068';  
+font-family: 'FontAwesome';  
+}  
+.nav-item ul.nav-second-level {  
+padding-left: 0;  
+}  
+.nav-item ul.nav-second-level > .nav-item {  
+padding-left: 20px;  
+}  
+@media (min-width: 992px) {  
+.sidenav {  
+  position: absolute;  
+  top: 0;  
+  left: 0;  
+  width: 230px;  
+  height: calc(100vh - 3.5rem);  
+  margin-top: 3.5rem;  
+  background: #6aca92!important;
+  box-sizing: border-box;  
+  border-top: 1px solid rgba(0, 0, 0, 0.3);  
+}  
+.navbar-expand-lg .sidenav {  
+  flex-direction: column;  
+}  
+.content-wrapper {  
+  margin-left: 230px;  
+}  
+.footer {  
+  width: calc(100% - 230px);  
+  margin-left: 230px;  
+}  
+}  

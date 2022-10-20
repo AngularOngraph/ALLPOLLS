@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 import { AddPollsComponent } from './add-polls/add-polls.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PollsVotingComponent } from './polls-voting/polls-voting.component';
@@ -11,14 +12,11 @@ const routes: Routes = [
     component: DashboardComponent,
     children:[
       { path: '', redirectTo: 'list', pathMatch: 'full'},
-      { path: 'list', component: ViewPollsComponent},
-      { path: 'add', component: AddPollsComponent},
-      { path: 'vote-polls', component: PollsVotingComponent},
+      { path: 'list', component: ViewPollsComponent, canActivate: [AuthGuard]},
+      { path: 'add', component: AddPollsComponent, canActivate: [AuthGuard]},
+      { path: 'polls-vote/:id', component: PollsVotingComponent, canActivate: [AuthGuard]},
     ]
   }
-  // { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-  // { path: 'dashboard', component: DashboardComponent},
-  // { path: 'register', component: SignUpComponent },
 ];
 
 @NgModule({
