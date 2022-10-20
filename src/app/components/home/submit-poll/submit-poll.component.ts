@@ -4,6 +4,9 @@ import { PollsService } from 'src/app/services/polls.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { element } from 'protractor';
+ // Initialize the agent at application startup.
+ const fpPromise = import('@fingerprintjs/fingerprintjs')
+ .then(FingerprintJS => FingerprintJS.load())
 
 @Component({
   selector: 'app-submit-poll',
@@ -16,8 +19,9 @@ export class SubmitPollComponent implements OnInit {
   public activeOpt3 :boolean = false;
   public activeOpt4 :boolean = false;
   public activeOpt :string = '';
-  public pollData: any = {};
-  public pollSubmitForm: FormGroup;
+  public pollData :any = {};
+  public pollSubmitForm :FormGroup;
+  private visitorId :string = '';
 
   constructor(private pollService: PollsService,
      private route: ActivatedRoute,
@@ -25,12 +29,25 @@ export class SubmitPollComponent implements OnInit {
      private fb: FormBuilder) { 
       this.pollSubmitForm = this.fb.group({
         userId: [''],
-        pollId: [''],
-        selectOptId: ['', [Validators.required]]
+        pollId: ['', [Validators.required]],
+        selectOptId: ['', [Validators.required]],
+        visitorId: ['', [Validators.required]]
       });
     }
 
   ngOnInit(): void {
+    // Get the visitor identifier when you need it.
+    fpPromise
+    .then(fp => fp.get())
+    .then(result => {
+      // This is the visitor identifier:
+      this.visitorId = result.visitorId
+      //console.log(visitorId)
+      this.pollSubmitForm.patchValue({
+        visitorId: this.visitorId
+      });
+    })
+
     this.route.params.subscribe(params => {
        this.getPollDetails(params.pollId);
        this.pollSubmitForm.patchValue({
@@ -55,7 +72,12 @@ export class SubmitPollComponent implements OnInit {
   getPollDetails(pollId:string){
     this.pollService.getPollById(pollId).subscribe((res) => {
       if (res.success) {
-        this.pollData = res.response;
+        if(res.response.visitors.includes(this.visitorId)){
+          this.pollData = res.response;
+          //console.log(res);
+        }else{
+          console.log("User already submit poll");
+        }
       }
     }, (err) => {
       console.log(err);

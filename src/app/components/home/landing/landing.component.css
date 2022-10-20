@@ -1,17 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 html,
 body {
-    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .section-block {
     height: 100%;
     width: 100%;
-    background-image: url('../../../../assets/background.png');
-    background-size: 100% 100%;
     padding: 60px;
     display: flex;
     justify-content: space-between;
+    background-image: url('../../../../assets/background.png');
+    background-size: 100% 100%;
 }
 
 .first-block {
@@ -51,6 +52,21 @@ body {
 .all-polls {
     width: 100%;
     max-width: 164px;
+}
+
+.layoutImg{
+    width: 100%;
+    height: auto;
+}
+
+.layoutImg img{
+    width: 100%;
+    height: auto;
+    max-width: 600px;
+    max-height: 500px;
+    background-size:     cover;  
+    background-repeat:   no-repeat;                
+    
 }
 
 
