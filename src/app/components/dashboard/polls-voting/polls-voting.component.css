@@ -25,3 +25,9 @@
 .row{
   margin: 28px 15px !important;
 }
+
+.card{
+  margin-top: 70px;
+  padding: 10px;
+  border-radius: 10px;
+}

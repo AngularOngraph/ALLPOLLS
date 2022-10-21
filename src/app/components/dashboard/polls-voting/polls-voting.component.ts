@@ -13,8 +13,9 @@ import { environment } from 'src/environments/environment';
 export class PollsVotingComponent implements OnInit {
   public domain = environment.clientUrl;
   public pollId: any;
-  public pollData = {};
+  public pollData: any = {};
   public totalVotes: any = 0;
+  public pollQuestion: string = '';
   constructor(private activatedRoute: ActivatedRoute,
     private pollService: PollsService,private toastr: ToastrService,) { }
   // Pie charts
@@ -47,6 +48,7 @@ export class PollsVotingComponent implements OnInit {
       }
       this.pieChartLabels = [];
       this.pieChartData = [];
+      this.pollQuestion = res.response.question;
       res.response.options.forEach((el: any) => {
         this.pieChartLabels.push(el.value);
         this.totalVotes += el.count;

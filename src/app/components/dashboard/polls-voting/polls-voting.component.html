@@ -102,12 +102,32 @@
     </div>
   </div> -->
 
-<div class="container">
-  <div class="first-block">
-    <div class="custom-canvas-width">
-      <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" [colors]="pieChartColors">
-      </canvas>
-  </div>
+<div class="container mt-5">
+  <div class="card" *ngIf="pollData">
+    <div class="queBlock row">
+      <div class="col-12" style="font-size: 14px;">Poll Question:</div>
+      <div class="col-12 font-weight-bold ml-3">{{pollQuestion}}</div>
+    </div>
+    <hr>
+    <div class="optionBlock row">
+      <div class="col-12" style="font-size: 14px;">Options:</div>
+      <div *ngIf="totalVotes > 0; else elseOptionBlock" class="col-12 font-weight-bold pl-3">
+        <div class="first-block">
+          <div class="custom-canvas-width">
+            <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" [colors]="pieChartColors">
+            </canvas>
+          </div>
+        </div>
+      </div>
+      <ng-template class="row" #elseOptionBlock>
+        <div class="col-12 mx-3 mt-3" *ngFor="let option of pollData.options; let i = index">
+          <div>{{i+1}} : {{option.value}}</div>
+        </div>
+        <div class="col-12 mx-3 mt-3">
+          <b>Note:</b> No one answer this poll yet.
+        </div>
+      </ng-template>
+    </div>
   </div>
   <div class="second-block">
     <div class="row">
@@ -139,8 +159,6 @@
         </div>
       </div>
     </div>
-    
-
   </div>
 </div>
 

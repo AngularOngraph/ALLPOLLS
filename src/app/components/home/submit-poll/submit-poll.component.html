@@ -1,24 +1,40 @@
-<div class="container">
-   <form *ngIf="pollData" [formGroup]="pollSubmitForm" class="multisteps_form bg-white position-relative overflow-hidden poll-block" id="wizard">
-      <div class="multisteps_form_panel step active ">
-         <div class="question_title text-center text-uppercase">
-            <h1 class="animate__animated animate__fadeInRight animate_25ms">{{pollData.question}}</h1>
-         </div>
-         <div class="row  form_items" *ngFor="let option of pollData.options">
-            <div class="col-12">
-               <ul class="list-unstyled p-0">
-                  <li id="{{option.id}}" (click)="selectedIndex(option.id)" class="step_1 animate__animated animate__fadeInRight animate_50ms option" >
-                     <input  type="radio"  name="selectOption">
-                     <label for={{option.id}}>{{option.value}}</label>
-                  </li>
-               </ul>
-            </div>
+
+<div class="container mt-5">
+   <div class="card">
+      <div class="" *ngIf="pollActive; else elsePollDeactive">
+         <div class="" *ngIf="!userSubmitPoll; else POllSubmited">
+            <form *ngIf="pollData" [formGroup]="pollSubmitForm">
+               <div class="row text-center question_title text-uppercase mx-3">
+                  <h2>{{pollData.question}}</h2>
+               </div>
+               <hr>
+               <div class="row  form_items" *ngFor="let option of pollData.options">
+                  <div class="col-12">
+                     <ul class="list-unstyled p-0">
+                        <li id="{{option.id}}" (click)="selectedIndex(option.id)" class="option">
+                           <input  type="radio"  name="selectOption">
+                           <label for={{option.id}}>{{option.value}}</label>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="row justify-content-end mr-2">
+                  <button type="button"  class="btn btn-success text-uppercase text-white"  (click)="onSubmitPoll()" id="nextBtn">Submit</button>
+               </div>
+            </form>
          </div>
       </div>
-      <div class="form_btn">
-         <button type="button"  class="next_btn rounded-pill position-absolute text-uppercase text-white"  (click)="onSubmitPoll()" id="nextBtn">Submit</button>
-      </div>
-   </form>
+      <ng-template #POllSubmited>
+         <div class="row justify-content-center" style="font-size: 22px;">
+            <b>Note: </b>You have already submited this poll.
+         </div>
+      </ng-template>
+      <ng-template #elsePollDeactive>
+         <div class="row justify-content-center" style="font-size: 22px;">
+            <b>Note: </b>Survey is no longer avilable.
+         </div>
+      </ng-template>
    </div>
+</div>
    
    

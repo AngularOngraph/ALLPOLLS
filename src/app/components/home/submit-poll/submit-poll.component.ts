@@ -22,6 +22,9 @@ export class SubmitPollComponent implements OnInit {
   public pollData :any = {};
   public pollSubmitForm :FormGroup;
   private visitorId :string = '';
+  public pollActive :boolean = true;
+  public userSubmitPoll :boolean = false;
+
 
   constructor(private pollService: PollsService,
      private route: ActivatedRoute,
@@ -42,22 +45,22 @@ export class SubmitPollComponent implements OnInit {
     .then(result => {
       // This is the visitor identifier:
       this.visitorId = result.visitorId
-      //console.log(visitorId)
       this.pollSubmitForm.patchValue({
-        visitorId: this.visitorId
+        // visitorId: this.visitorId
       });
+      this.getPollData();
     })
-
+  }
+  getPollData(){
     this.route.params.subscribe(params => {
-       this.getPollDetails(params.pollId);
-       this.pollSubmitForm.patchValue({
-        pollId: params.pollId
+      this.getPollDetails(params.pollId);
+      this.pollSubmitForm.patchValue({
+       pollId: params.pollId
       });
     })
   }
   selectedIndex(index:string ){
     const elemts = document.querySelectorAll('.option');
-    console.log(elemts);
     elemts.forEach((option)=>{
       option.classList.remove('active');
     });
@@ -72,11 +75,13 @@ export class SubmitPollComponent implements OnInit {
   getPollDetails(pollId:string){
     this.pollService.getPollById(pollId).subscribe((res) => {
       if (res.success) {
-        if(res.response.visitors.includes(this.visitorId)){
+        if(!res.response.visitors.includes(this.visitorId)){
           this.pollData = res.response;
+          this.pollActive = res.response.status;
           //console.log(res);
         }else{
-          console.log("User already submit poll");
+          this.userSubmitPoll = true;
+          //console.log("User already submit poll");
         }
       }
     }, (err) => {
