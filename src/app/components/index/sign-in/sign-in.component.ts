@@ -29,18 +29,13 @@ export class SignInComponent implements OnInit {
           this.toastr.success(res.msg);
           this.router.navigate(['dashboard']);
         } else {
-          console.log(res.msg);
           this.toastr.error(res.msg);
         }
       },
         (err) => {
-          console.log(err);
           this.toastr.error(err.error);
         }
       )
     }
   }
-
-
-
 }

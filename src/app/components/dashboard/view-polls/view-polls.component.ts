@@ -23,7 +23,6 @@ export class ViewPollsComponent implements OnInit {
   }
 
   getPollList() {
-    console.log(this.search, this.limit, this.page);
     this.pollService.getPolls(this.search, this.limit, this.page).subscribe((res) => {
       if (res.success) {
         this.pollData = res.response;
@@ -35,18 +34,6 @@ export class ViewPollsComponent implements OnInit {
     let options = {};
     let search = {};
 
-  }
-
-  searchFun(event: any){
-    //console.log(event.target.value);
-    // this.search = event.target.value;
-    // this.getPollList();
-    this.pollService.searchPolls(event.target.value).subscribe((res)=>{
-      if (res.success) {
-        this.pollData = res.response;
-        this.collectionSize = res.count;
-      }
-    });
   }
 
 }
