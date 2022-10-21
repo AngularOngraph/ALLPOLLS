@@ -24,3 +24,9 @@ input{
     display: flex;
     gap: 200px;
 }
+.active-poll{
+    color: #008000db;
+}
+.inactive-poll{
+    color: #ff0000a6;
+}

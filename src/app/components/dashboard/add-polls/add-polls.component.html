@@ -8,12 +8,12 @@
         <div class="form">
           <div class="col">
             <div class="form-group row">
-              <label class="col-md-12 labelText">Title :</label>
+              <label class="col-md-12 labelText">Questions :</label>
               <div class="col-md-12">
                 <div class="form-group">
                   <textarea class="form-control" formControlName="question" placeholder="Enter a question here"></textarea>
                   <div formArrayName="options">
-                    <label class="col-md-12 labelText">Answer Options :</label>
+                    <label class="col-md-12 labelText"> Answers :</label>
                     <div *ngFor="let skill of questionsOptions().controls; let choiceIndex=index">
                       <div [formGroupName]="choiceIndex" class="d-flex">
                         <div class="optionRow">

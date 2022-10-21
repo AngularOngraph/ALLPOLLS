@@ -122,11 +122,9 @@ export class ApiService {
   }
 
   public logout(): void {
-    this.env = "";
     this.token = "";
-    window.localStorage.removeItem("env");
     window.localStorage.removeItem("sdasd923hd9dwe");
-    this.router.navigateByUrl("/");
+    this.router.navigateByUrl("/sign-in");
   }
 
 }

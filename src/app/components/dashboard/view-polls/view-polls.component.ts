@@ -9,7 +9,7 @@ import { Router } from "@angular/router";
 })
 export class ViewPollsComponent implements OnInit {
   search:string=''
-  limit: any = 5;
+  limit: any = 10;
   page: any = 1;
   currentPage: number = 1;
   collectionSize: number = 0;

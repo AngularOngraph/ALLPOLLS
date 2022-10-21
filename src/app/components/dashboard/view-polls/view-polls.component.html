@@ -1,9 +1,9 @@
   <div class="main-container"> 
     <div class="search">
-      <div class="form-inline ml-auto mt-2 mt-md-0 ">  
+      <div class="form-inline ml-auto mt-4 ">  
         <input class="form-control mr-sm-2" type="text" [(ngModel)]="search" placeholder="Search Polls Here" aria-label="Search">  
         <div>
-          <button class="btn  my-2 my-sm-0 gradbtn" type="submit">Add New Poll</button>  
+          <button class="btn  my-2 my-sm-0 gradbtn" routerLinkActive="active" [routerLink]="['/dashboard/add']">Add New Poll</button>  
         </div>
         
       </div> 
@@ -19,8 +19,8 @@
       <tbody>
         <tr *ngFor="let data of pollData">
           <td class="question">{{data.question}}</td>
-          <td *ngIf="data.status == true"><a href="" class="badge">open</a></td>
-          <td *ngIf="data.status == false"><a href="" class="badge">close</a></td>
+          <td *ngIf="data.status == true"><a  class="badge active-poll">open</a></td>
+          <td *ngIf="data.status == false"><a class="badge inactive-poll">close</a></td>
           <td><button class="gradbtn" routerLinkActive="active" routerLink="/dashboard/polls-vote/{{data._id}}">
             view
           </button></td>
