@@ -1,5 +1,5 @@
 .main-container{
-    margin-top: 4rem;
+    margin-top: 5rem;
 }
 .question {
     padding: 0.75rem;
@@ -17,10 +17,16 @@ table {
 }
 input{
     border: 2px solid #aaaaaa !important;
-    width: 58% !important;
-    margin: 2rem;
+    max-width: 85%;
+    margin: 2rem 1rem;
 }
 .search{
     display: flex;
     gap: 200px;
+}
+.active-poll{
+    color: #008000db;
+}
+.inactive-poll{
+    color: #ff0000a6;
 }

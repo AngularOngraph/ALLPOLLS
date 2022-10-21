@@ -35,6 +35,7 @@ export class SignInComponent implements OnInit {
       },
         (err) => {
           console.log(err);
+          this.toastr.error(err.error);
         }
       )
     }

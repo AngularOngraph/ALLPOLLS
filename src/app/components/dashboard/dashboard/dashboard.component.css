@@ -1,6 +1,8 @@
 /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
 .row.content {height: 150px}
-
+.row {
+  margin: 0px !important;
+}
 .link-icon{
   color: white !important;
   display: inline-block;
@@ -35,7 +37,9 @@
   top: 549px;
 }
 
-
+.logo img{
+  width: 35%;
+}
 
 
 /* external css */
@@ -57,6 +61,7 @@ background-color: #ccc;
 }  
 .bg-dark {  
   background-color: #6c757d38 !important ;  
+  display: flex;
 }  
 .nav-link:hover {  
 transition: all 0.4s;  
@@ -84,7 +89,7 @@ padding-left: 20px;
   left: 0;  
   width: 230px;  
   height: calc(100vh - 3.5rem);  
-  margin-top: 3.5rem;  
+  margin-top: 4.2rem;  
   background: #6aca92!important;
   box-sizing: border-box;  
   border-top: 1px solid rgba(0, 0, 0, 0.3);  
@@ -99,4 +104,47 @@ padding-left: 20px;
   width: calc(100% - 230px);  
   margin-left: 230px;  
 }  
+
 }  
+@media (min-width: 992px){
+  .navbar-expand-lg .navbar-collapse {
+    display: flex!important;
+    flex-basis: auto;
+    justify-content: end;
+}
+}
+
+.user-avatar{
+  width: 40%;
+  display: flex;
+  justify-content: end;
+}
+.set-avatar{
+  width: 10%;
+}
+
+
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+
+/* 1 */
+.btn-1 {
+  background: #6aca92;
+  border: none;
+}

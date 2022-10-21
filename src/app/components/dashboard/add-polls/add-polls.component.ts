@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { PollsService } from 'src/app/services/polls.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-add-polls',
@@ -11,7 +13,10 @@ export class AddPollsComponent implements OnInit {
   public pollForm: FormGroup;
   public optionsArray = [this.newChoice()];
 
-  constructor(private fb: FormBuilder, private pollService: PollsService) {
+  constructor(private fb: FormBuilder,
+     private pollService: PollsService,
+    private toastr: ToastrService,
+    private router: Router) {
     this.pollForm = this.fb.group({
       question: ['', [Validators.required]],
       options: this.fb.array(this.optionsArray),
@@ -41,6 +46,8 @@ export class AddPollsComponent implements OnInit {
   savePoll() {
     this.pollService.saveNewPoll(this.pollForm.value).subscribe((res) => {
       if (res.success) {
+        this.toastr.success(res.msg);
+        this.router.navigate(['/dashboard/list']);
       }
     }, (err) => {
       console.log(err);
