@@ -12,13 +12,13 @@ import { environment } from 'src/environments/environment';
 })
 export class PollsVotingComponent implements OnInit {
   public domain = environment.clientUrl;
-  public pollId: any;
-  public pollData: any = {};
-  public totalVotes: any = 0;
+  public pollId: string = '';
+  public pollData: Object = {};
+  public totalVotes: Number = 0;
   public pollQuestion: string = '';
   public pollStatus: boolean = true;
   constructor(private activatedRoute: ActivatedRoute,
-    private pollService: PollsService,private toastr: ToastrService,) { }
+    private pollService: PollsService, private toastr: ToastrService,) { }
   // Pie charts
   public pieChartLabels: Label[] = ['first', 'second', 'third', 'fourth'];
   public pieChartData: any = [
@@ -66,19 +66,19 @@ export class PollsVotingComponent implements OnInit {
 
     return Math.round(Number(vote) / Number(total) * 100)
   }
-  // copy invite url from input box
-  copyInviteUrl() {
-    // let elem = document.createElement("input")
-    // var inputc = document.body.appendChild(elem);
-    // inputc.value = this.domain+'poll'+this.pollId
-    // inputc.focus();
-    // inputc.select();
-    // document.execCommand("copy");
-    // inputc.parentNode.removeChild(inputc);
+
+  copyUrl() {
+    const elem = document.createElement("input")
+    var inputc = document.body.appendChild(elem);
+    inputc.value = this.domain + '/submit-poll/' + this.pollId
+    inputc.focus();
+    inputc.select();
+    document.execCommand("copy");
+    document.body.removeChild(inputc);
     this.toastr.success("Url Copied!");
   }
 
-  closePoll(){
+  closePoll() {
     this.pollService.changePollStatus(this.pollId).subscribe((res) => {
       if (res.success) {
         this.toastr.success(res.msg);

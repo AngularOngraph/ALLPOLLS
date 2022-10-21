@@ -14,12 +14,7 @@ import { element } from 'protractor';
   styleUrls: ['./submit-poll.component.css']
 })
 export class SubmitPollComponent implements OnInit {
-  public activeOpt1 :boolean = false;
-  public activeOpt2 :boolean = false;
-  public activeOpt3 :boolean = false;
-  public activeOpt4 :boolean = false;
-  public activeOpt :string = '';
-  public pollData :any = {};
+  public pollData :object = {};
   public pollSubmitForm :FormGroup;
   private visitorId :string = '';
   public pollActive :boolean = true;
