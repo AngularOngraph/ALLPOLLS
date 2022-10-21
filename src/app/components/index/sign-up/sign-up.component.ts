@@ -35,7 +35,6 @@ export class SignUpComponent implements OnInit {
           this.toastr.success(res.msg);
           this.router.navigate(['sign-in']);
         } else {
-          console.log(res.msg);
           this.toastr.error(res.msg);
         }
       },
