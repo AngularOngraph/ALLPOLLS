@@ -104,6 +104,9 @@
 
 <div class="container mt-5">
   <div class="card" *ngIf="pollData">
+    <div class="row justify-content-end mx-3" *ngIf="pollStatus">
+      <button class="btn btn-danger text-white" (click)="closePoll()">Close Poll</button>
+    </div>
     <div class="queBlock row">
       <div class="col-12" style="font-size: 14px;">Poll Question:</div>
       <div class="col-12 font-weight-bold ml-3">{{pollQuestion}}</div>

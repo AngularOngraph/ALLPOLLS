@@ -24,6 +24,7 @@ export class SubmitPollComponent implements OnInit {
   private visitorId :string = '';
   public pollActive :boolean = true;
   public userSubmitPoll :boolean = false;
+  public pollSubmit: boolean = false;
 
 
   constructor(private pollService: PollsService,
@@ -46,7 +47,7 @@ export class SubmitPollComponent implements OnInit {
       // This is the visitor identifier:
       this.visitorId = result.visitorId
       this.pollSubmitForm.patchValue({
-        // visitorId: this.visitorId
+        visitorId: this.visitorId
       });
       this.getPollData();
     })
@@ -81,7 +82,7 @@ export class SubmitPollComponent implements OnInit {
           //console.log(res);
         }else{
           this.userSubmitPoll = true;
-          //console.log("User already submit poll");
+          console.log("You have already submit poll");
         }
       }
     }, (err) => {
@@ -91,8 +92,10 @@ export class SubmitPollComponent implements OnInit {
 
   onSubmitPoll(){
     this.pollService.submitPoll(this.pollSubmitForm.value).subscribe((res) => {
+      console.log(res);
       if (res.success) {
         this.toastr.success(res.msg);
+        this.pollSubmit = true;
       }
     }, (err) => {
       console.log(err);

@@ -37,9 +37,17 @@ export class PollsService {
   }
 
 // submit poll
-public submitPoll(payload:Object): Observable<any>{
-  return this.apiService.request('post', 'polls/submit-poll/',{payload});
-}
+  public submitPoll(payload:Object): Observable<any>{
+    return this.apiService.request('post', 'polls/submit-poll/',{payload});
+  }
+// search polls
+  public searchPolls(searchQuery: string): Observable<any>{
+    return this.apiService.request('get', 'polls/search/'+searchQuery);
+  }
 
+// change status
+  public changePollStatus(pollId: string): Observable<any>{
+    return this.apiService.request('get', 'polls/poll-status/'+pollId);
+  }
 
 }

@@ -1,12 +1,11 @@
-  <div class="main-container"> 
-    <div class="search">
-      <div class="form-inline ml-auto mt-2 mt-md-0 ">  
-        <input class="form-control mr-sm-2" type="text" [(ngModel)]="search" placeholder="Search Polls Here" aria-label="Search">  
-        <div>
-          <button class="btn  my-2 my-sm-0 gradbtn" type="submit">Add New Poll</button>  
-        </div>
-        
+  <div class="main-container mr-4"> 
+    <div class="row justify-content-end mx-2">
+      <div class="">  
+        <input class="form-control" type="text" [(ngModel)]="search" (keyup) = "getPollList()" placeholder="Search Polls Here" aria-label="Search">  
       </div> 
+      <div>
+        <button class="btn gradbtn" type="submit">Add New Poll</button>  
+      </div>
     </div>         
     <table class="table table-hover table-bordered">
       <thead>
