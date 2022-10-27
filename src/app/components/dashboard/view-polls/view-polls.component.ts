@@ -23,7 +23,6 @@ export class ViewPollsComponent implements OnInit {
   }
 
   getPollList() {
-    console.log(this.search, this.limit, this.page);
     this.pollService.getPolls(this.search, this.limit, this.page).subscribe((res) => {
       if (res.success) {
         this.pollData = res.response;

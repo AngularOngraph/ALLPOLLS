@@ -74,10 +74,8 @@ export class SubmitPollComponent implements OnInit {
         if(!res.response.visitors.includes(this.visitorId)){
           this.pollData = res.response;
           this.pollActive = res.response.status;
-          //console.log(res);
         }else{
           this.userSubmitPoll = true;
-          console.log("You have already submit poll");
         }
       }
     }, (err) => {
@@ -87,7 +85,6 @@ export class SubmitPollComponent implements OnInit {
 
   onSubmitPoll(){
     this.pollService.submitPoll(this.pollSubmitForm.value).subscribe((res) => {
-      console.log(res);
       if (res.success) {
         this.toastr.success(res.msg);
         this.pollSubmit = true;

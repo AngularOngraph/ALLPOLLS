@@ -20,15 +20,15 @@ export class PollsVotingComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
     private pollService: PollsService, private toastr: ToastrService,) { }
   // Pie charts
-  public pieChartLabels: Label[] = ['first', 'second', 'third', 'fourth'];
+  public pieChartLabels: Label[] = [];
   public pieChartData: any = [
-    [25, 25, 25, 25],
+    [],
   ];
   public pieChartType: ChartType = 'pie';
   public pieChartColors: any[] =
     [
       {
-        backgroundColor: ['#D37506', '#f1b62a', '#d19406', '#f09719'],
+        backgroundColor: ['#ED7014', '#8D4004', '#B25600', '#EC9706', '#D16002', '#FF6347', 'C34723', 'D97448', 'FBCEB1', 'B06500'],
         borderColor: '#2c2d30',
         borderWidth: 0,
       }
@@ -62,7 +62,6 @@ export class PollsVotingComponent implements OnInit {
   }
 
   getVotingPercentage(total: any, vote: any) {
-    console.log(Math.round(Number(vote) / Number(total) * 100));
 
     return Math.round(Number(vote) / Number(total) * 100)
   }

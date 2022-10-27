@@ -41,6 +41,10 @@ body {
     background: #27aa5c !important;
 }
 
+.left-btn-icon {
+    display: flex;
+}
+
 .left-btn-icon button {
     max-width: 234px;
     padding-top: 5px;
