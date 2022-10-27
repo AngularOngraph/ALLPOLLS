@@ -8,11 +8,11 @@ import { Router } from "@angular/router";
   styleUrls: ['./view-polls.component.css']
 })
 export class ViewPollsComponent implements OnInit {
-  search:string=''
-  limit: any = 10;
-  page: any = 1;
+  search: string = ''
+  limit: number = 10;
+  page: number = 1;
   currentPage: number = 1;
-  collectionSize: number = 0;
+  collectionSize: Number = 0;
   public pollData: any = [];
   constructor(private pollService: PollsService,
     private router: Router) {
@@ -29,11 +29,6 @@ export class ViewPollsComponent implements OnInit {
         this.collectionSize = res.count;
       }
     })
-  }
-  onShow() {
-    let options = {};
-    let search = {};
-
   }
 
 }

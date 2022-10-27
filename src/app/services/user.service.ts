@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
 import { ApiService } from "./api.service";
-
+import { RegistrationPayload,loginPayload } from "../interface/user"
+import { apiResponse } from '../interface/poll';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,13 +15,13 @@ export class UserService {
 
 
   // new user registration
-  public registration(user: Object): Observable<any> {
+  public registration(user: RegistrationPayload): Observable<apiResponse> {
     return this.apiService.request('post', 'signup', user)
   }
 
 
   // login after registration
-  public login(user: Object): Observable<any> {
+  public login(user: loginPayload): Observable<apiResponse> {
     return this.apiService.request('post', 'signin', user)
   }
 }
