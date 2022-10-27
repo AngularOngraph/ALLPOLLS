@@ -1,16 +1,49 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormBuilder } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { PollsService } from 'src/app/services/polls.service';
+import { Router } from "@angular/router";
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { of } from 'rxjs';
+
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { AddPollsComponent } from './add-polls.component';
 
-describe('AddPollsComponent', () => {
+class ToasterMock {
+  success(message: string, title: string): void { resMessage = message; }
+}
+let resMessage: string = '';
+const routerSpy = { navigate: jasmine.createSpy('navigate') };
+
+fdescribe('AddPollsComponent', () => {
   let component: AddPollsComponent;
   let fixture: ComponentFixture<AddPollsComponent>;
 
   beforeEach(async () => {
+    resMessage = '';
     await TestBed.configureTestingModule({
-      declarations: [ AddPollsComponent ]
+      imports: [
+        HttpClientModule,
+        HttpClientTestingModule
+      ],
+      providers: [
+        FormBuilder,
+        {
+          provide: ToastrService,
+          useClass: ToasterMock
+        },
+        {
+          provide: Router,
+          useValue: routerSpy
+        },
+        PollsService
+      ],
+      declarations: [AddPollsComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -21,5 +54,13 @@ describe('AddPollsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should create', () => {
+    const fakeAPIResponse = { success: true, msg: 'ABCD' };
+    spyOn(component['pollService'], 'saveNewPoll' as never).and.returnValue(of(fakeAPIResponse) as never);
+    component.savePoll();
+    expect(routerSpy.navigate).toHaveBeenCalledWith(['/dashboard/list']);
+    expect(resMessage).toBe(fakeAPIResponse.msg);
   });
 });
