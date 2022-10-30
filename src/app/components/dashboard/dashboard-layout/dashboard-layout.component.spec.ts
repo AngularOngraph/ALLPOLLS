@@ -1,6 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientModule } from '@angular/common/http';
 import { DashboardLayoutComponent } from './dashboard-layout.component';
+import { ApiService } from 'src/app/services/api.service';
+import { Router } from "@angular/router";
+
+const routerSpy = { navigateByUrl: jasmine.createSpy('navigateByUrl') };
 
 describe('DashboardLayoutComponent', () => {
   let component: DashboardLayoutComponent;
@@ -8,9 +14,20 @@ describe('DashboardLayoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashboardLayoutComponent ]
+      imports: [
+        HttpClientModule,
+        HttpClientTestingModule
+      ],
+      providers: [
+        ApiService,
+        {
+          provide: Router,
+          useValue: routerSpy
+        },
+      ],
+      declarations: [DashboardLayoutComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -21,5 +38,10 @@ describe('DashboardLayoutComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should try to navigate to login', () => {
+    component.logout();
+    expect(routerSpy.navigateByUrl).toHaveBeenCalledWith('/sign-in');
   });
 });

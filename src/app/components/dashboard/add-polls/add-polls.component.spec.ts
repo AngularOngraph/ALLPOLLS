@@ -7,8 +7,6 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { of } from 'rxjs';
 
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-
 import { AddPollsComponent } from './add-polls.component';
 
 class ToasterMock {
@@ -40,8 +38,7 @@ describe('AddPollsComponent', () => {
         },
         PollsService
       ],
-      declarations: [AddPollsComponent],
-      schemas: [NO_ERRORS_SCHEMA]
+      declarations: [AddPollsComponent]
     })
       .compileComponents();
   });
