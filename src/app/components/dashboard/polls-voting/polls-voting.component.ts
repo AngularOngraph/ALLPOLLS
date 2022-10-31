@@ -14,7 +14,7 @@ import { environment } from 'src/environments/environment';
 export class PollsVotingComponent implements OnInit {
   public domain = environment.clientUrl;
   public pollId: string = '';
-  public pollData:any;
+  public pollData: any;
   public totalVotes: number = 0;
   public pollQuestion: string = '';
   public pollStatus: boolean = true;
@@ -26,14 +26,14 @@ export class PollsVotingComponent implements OnInit {
     [],
   ];
   public pieChartType: ChartType = 'pie';
-  public pieChartColors =
-    [
-      {
-        backgroundColor: ['#ED7014', '#8D4004', '#B25600', '#EC9706', '#D16002', '#FF6347', 'C34723', 'D97448', 'FBCEB1', 'B06500'],
-        borderColor: '#2c2d30',
-        borderWidth: 0,
-      }
-    ];
+  public pieChartColors = [
+    {
+      backgroundColor: ['#ED7014', '#8D4004', '#B25600', '#EC9706', '#D16002', '#FF6347', 'C34723', 'D97448', 'FBCEB1', 'B06500'],
+      borderColor: '#2c2d30',
+      borderWidth: 0,
+    }
+  ];
+
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       if (params.id) {
@@ -43,7 +43,7 @@ export class PollsVotingComponent implements OnInit {
     });
   }
 
-  getUniquePoll(id:string) {
+  getUniquePoll(id: string) {
     this.pollService.getPollById(id).subscribe((res) => {
       if (res.success) {
         this.pollData = res.response
@@ -56,14 +56,14 @@ export class PollsVotingComponent implements OnInit {
         this.pieChartLabels.push(el.value);
         this.totalVotes += el.count;
       });
-      res.response.options.forEach((el: { count: string; }) => 
-      this.pieChartData.push(this.getVotingPercentage(this.totalVotes, el.count)));
+      res.response.options.forEach((el: { count: string; }) =>
+        this.pieChartData.push(this.getVotingPercentage(this.totalVotes, el.count)));
     }, (err) => {
       console.log(err);
     })
   }
 
-  getVotingPercentage(total: number, vote: string):any {
+  getVotingPercentage(total: number, vote: string): any {
 
     return Math.round(Number(vote) / Number(total) * 100)
   }

@@ -20,8 +20,7 @@ export class SignUpComponent implements OnInit {
       password: new FormControl('', [Validators.required,
       Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[$#?!@%^&*-]).{8,24}$')]),
       confirmPassword: new FormControl('', [Validators.required])
-    },
-    );
+    });
   }
 
   ngOnInit(): void {

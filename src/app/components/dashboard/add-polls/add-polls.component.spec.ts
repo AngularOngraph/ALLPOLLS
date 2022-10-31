@@ -7,17 +7,15 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { of } from 'rxjs';
 
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-
 import { AddPollsComponent } from './add-polls.component';
 
 class ToasterMock {
-  success(message: string, title: string): void { resMessage = message; }
+  success(message: string): void { resMessage = message; }
 }
 let resMessage: string = '';
 const routerSpy = { navigate: jasmine.createSpy('navigate') };
 
-fdescribe('AddPollsComponent', () => {
+describe('AddPollsComponent', () => {
   let component: AddPollsComponent;
   let fixture: ComponentFixture<AddPollsComponent>;
 
@@ -40,8 +38,7 @@ fdescribe('AddPollsComponent', () => {
         },
         PollsService
       ],
-      declarations: [AddPollsComponent],
-      schemas: [NO_ERRORS_SCHEMA]
+      declarations: [AddPollsComponent]
     })
       .compileComponents();
   });
@@ -56,11 +53,11 @@ fdescribe('AddPollsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should create', () => {
+  it('should handle sucess response', () => {
     const fakeAPIResponse = { success: true, msg: 'ABCD' };
     spyOn(component['pollService'], 'saveNewPoll' as never).and.returnValue(of(fakeAPIResponse) as never);
     component.savePoll();
-    expect(routerSpy.navigate).toHaveBeenCalledWith(['/dashboard/list']);
     expect(resMessage).toBe(fakeAPIResponse.msg);
+    expect(routerSpy.navigate).toHaveBeenCalledWith(['/dashboard/list']);
   });
 });

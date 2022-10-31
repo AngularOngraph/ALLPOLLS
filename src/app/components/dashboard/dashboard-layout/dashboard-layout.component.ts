@@ -18,8 +18,5 @@ export class DashboardLayoutComponent implements OnInit {
     this.apiService.logout();
   }
 
-  
-
-
 }
 

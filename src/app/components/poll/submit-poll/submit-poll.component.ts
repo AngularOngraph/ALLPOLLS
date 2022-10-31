@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PollsService } from 'src/app/services/polls.service';
 import { ToastrService } from 'ngx-toastr';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { element } from 'protractor';
  // Initialize the agent at application startup.
  const fpPromise = import('@fingerprintjs/fingerprintjs')
