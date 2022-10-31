@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardLayoutComponent } from './dashboard-layout.component';
 import { Router } from "@angular/router";
 
-const routerSpy = { navigateByUrl: jasmine.createSpy('navigateByUrl') };
+const routerSpy = { navigate: jasmine.createSpy('navigate') };
 
 describe('DashboardLayoutComponent', () => {
   let component: DashboardLayoutComponent;
@@ -39,6 +39,6 @@ describe('DashboardLayoutComponent', () => {
 
   it('should try to navigate to login', () => {
     component.logout();
-    expect(routerSpy.navigateByUrl).toHaveBeenCalledWith('/sign-in');
+    expect(routerSpy.navigate).toHaveBeenCalledWith(['/sign-in']);
   });
 });
