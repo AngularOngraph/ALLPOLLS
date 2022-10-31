@@ -1,9 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardLayoutComponent } from './dashboard-layout.component';
-import { ApiService } from 'src/app/services/api.service';
 import { Router } from "@angular/router";
 
 const routerSpy = { navigateByUrl: jasmine.createSpy('navigateByUrl') };
@@ -19,7 +17,6 @@ describe('DashboardLayoutComponent', () => {
         HttpClientTestingModule
       ],
       providers: [
-        ApiService,
         {
           provide: Router,
           useValue: routerSpy

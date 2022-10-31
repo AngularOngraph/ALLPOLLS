@@ -2,14 +2,13 @@ import { TestBed } from '@angular/core/testing';
 import { Router } from "@angular/router";
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpClientModule } from '@angular/common/http';
-import { ApiService } from '../services/api.service';
 import { NoAuthGuard } from './no-auth.guard';
 
 const routerSpy = { navigate: jasmine.createSpy('navigate') };
 
 describe('NoAuthGuard', () => {
   let guard: NoAuthGuard;
-  let service: ApiService;
+  // let service: ApiService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -24,7 +23,7 @@ describe('NoAuthGuard', () => {
         }
       ]
     });
-    service = TestBed.inject(ApiService);
+    // service = TestBed.inject(ApiService);
     guard = TestBed.inject(NoAuthGuard);
   });
 

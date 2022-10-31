@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/services/api.service';
+import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-layout',
@@ -8,14 +9,16 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class DashboardLayoutComponent implements OnInit {
 
-  constructor(private apiService :ApiService) { }
+  constructor(private userService :UserService,private router: Router) { }
 
   ngOnInit(): void {
     
   }
 
   logout(){
-    this.apiService.logout();
+    if(this.userService.logout()){
+      this.router.navigate(['/sign-in']);
+    }
   }
 
 }

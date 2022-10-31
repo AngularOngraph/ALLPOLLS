@@ -7,7 +7,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { tokenHandler } from './services/helper/tokanHandler';
+import { tokenHandler } from './services/helper/tokenHandler';
+import { requestHandler } from './services/helper/requestHandler';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { tokenHandler } from './services/helper/tokanHandler';
     ToastrModule.forRoot(),
     NgbModule
   ],
-  providers: [tokenHandler],
+  providers: [tokenHandler,requestHandler],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
