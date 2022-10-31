@@ -3,6 +3,7 @@ import { environment } from "../../environments/environment";
 import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
+import { tokenHandler } from './helper/tokanHandler';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class ApiService {
     save token into localStorage as a item with specific key
  */
   private saveToken(token: string): void {
-    localStorage.setItem("sdasd923hd9dwe", token);
+    tokenHandler.setToken(token);
     this.token = token;
   }
 
@@ -29,7 +30,7 @@ export class ApiService {
      */
   private getToken(): string {
     if (!this.token) {
-      this.token = localStorage.getItem("sdasd923hd9dwe");
+      this.token = tokenHandler.getToken();
     }
     return this.token;
   }
@@ -78,7 +79,7 @@ export class ApiService {
             // login successful if there's a jwt token in the response
             if (user && user.token) {
               // store user details and jwt token in local storage to keep user logged in between page refreshes
-              localStorage.setItem("sdasd923hd9dwe", user.token);
+              tokenHandler.setToken(user.token);
             }
             return user;
           })
@@ -122,7 +123,7 @@ export class ApiService {
 
   public logout(): void {
     this.token = "";
-    window.localStorage.removeItem("sdasd923hd9dwe");
+    tokenHandler.removeToken();
     this.router.navigateByUrl("/sign-in");
   }
 
