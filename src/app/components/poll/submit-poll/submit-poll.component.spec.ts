@@ -1,13 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ToastrService } from 'ngx-toastr';
 import { PollsService } from 'src/app/services/polls.service';
-import { Router } from "@angular/router";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from "@angular/router";
 
-import { PollsVotingComponent } from './polls-voting.component';
-
+import { SubmitPollComponent } from './submit-poll.component';
 
 class ToasterMock {
   success(message: string): void { resMessage = message; }
@@ -17,9 +17,9 @@ const routerSpy = { navigate: jasmine.createSpy('navigate') };
 
 const activatedRouteStub = { params: { subscribe() { return { data: 21 }; } } };
 
-describe('PollsVotingComponent', () => {
-  let component: PollsVotingComponent;
-  let fixture: ComponentFixture<PollsVotingComponent>;
+describe('SubmitPollComponent', () => {
+  let component: SubmitPollComponent;
+  let fixture: ComponentFixture<SubmitPollComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -40,15 +40,16 @@ describe('PollsVotingComponent', () => {
           provide: Router,
           useValue: routerSpy
         },
-        PollsService
+        PollsService,
+        FormBuilder
       ],
-      declarations: [PollsVotingComponent]
+      declarations: [ SubmitPollComponent ]
     })
-      .compileComponents();
+    .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PollsVotingComponent);
+    fixture = TestBed.createComponent(SubmitPollComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
