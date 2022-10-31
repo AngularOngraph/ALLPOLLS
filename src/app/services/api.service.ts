@@ -13,14 +13,14 @@ export class ApiService {
   private token: any;
 
   constructor(private http: HttpClient,
-    private router: Router,) {
+    private router: Router,private tokenhandler :tokenHandler) {
   }
 
   /*
     save token into localStorage as a item with specific key
  */
   private saveToken(token: string): void {
-    tokenHandler.setToken(token);
+    this.tokenhandler.setToken(token);
     this.token = token;
   }
 
@@ -30,7 +30,7 @@ export class ApiService {
      */
   private getToken(): string {
     if (!this.token) {
-      this.token = tokenHandler.getToken();
+      this.token = this.tokenhandler.getToken();
     }
     return this.token;
   }
@@ -79,7 +79,7 @@ export class ApiService {
             // login successful if there's a jwt token in the response
             if (user && user.token) {
               // store user details and jwt token in local storage to keep user logged in between page refreshes
-              tokenHandler.setToken(user.token);
+              this.tokenhandler.setToken(user.token);
             }
             return user;
           })
@@ -123,7 +123,7 @@ export class ApiService {
 
   public logout(): void {
     this.token = "";
-    tokenHandler.removeToken();
+    this.tokenhandler.removeToken();
     this.router.navigateByUrl("/sign-in");
   }
 
